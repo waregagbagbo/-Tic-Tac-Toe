@@ -31,11 +31,35 @@ const GameBoard = (() => {
 })();
 
     // create player factory function
-    
+
 const Player = (name, mark) => {
     return { name, mark };
 }
 
-play = Player("Alice", "X");
-play1 = Player("Bob", "O");
 
+// playing a turn
+const Game = (() => {
+
+    // start with first player
+    let currentPlayer = Player("Player 1", "X");
+
+    const playTurn = (index) => {
+        GameBoard.setCell(index, currentPlayer.mark); // place the mark on the board
+        switchPlayer(); // switch to the other player 
+        showBoard(); // display the board in console
+    };
+
+    const switchPlayer = () => {
+        if (currentPlayer.mark === "X") {
+            currentPlayer = Player("Player 2", "O");
+        } else {
+            currentPlayer = Player("Player 1", "X");
+        }
+    };
+
+    const showBoard = () => {
+        console.log(GameBoard.getBoard());
+    };
+    return { playTurn };
+
+})();
