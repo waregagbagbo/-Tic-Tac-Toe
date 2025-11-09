@@ -24,9 +24,18 @@ const GameBoard = (() => {
         board = ["", "", "", "", "", "", "", "", ""];
     };
 
-    return { getBoard, setCell, resetBoard }; // return the functions to interact with the boardclear
+    return { getBoard, setCell, resetBoard }; // return the functions to interact with the board clear
+
 
     
 })();
 
-console.log(GameBoard())
+    // create player factory function
+    
+const Player = (name, mark) => {
+    return { name, mark };
+}
+
+play = Player("Alice", "X");
+play1 = Player("Bob", "O");
+
