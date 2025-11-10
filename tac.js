@@ -53,9 +53,12 @@ const Game = (() => {
                 console.log(`${currentPlayer.name} wins!`);
                 GameBoard.resetBoard(); // reset the board for a new game
             }
-
-            switchPlayer(); // switch to the other player 
-            return true;
+            else{
+                 switchPlayer(); // switch to the other player
+                 //return true;
+                
+            }
+         
         } else {
             console.log("Cell already occupied! Choose another cell.");
             return false;
@@ -100,5 +103,19 @@ const checkWinner = () => {
             return board[a]; // return the mark of the winner
         }
     }
-    return null; // no winner yet
+
+    // check for draw
+    if (board.every(cell => cell !== "")) {
+        console.log("It's a draw!");
+        return "draw";
+    }
+    //return null; // no winner yet
 }
+
+console.log("Tic-Tac-Toe Game Started!");
+//Game.playTurn(0); // Player 1 places X at index 0
+Game.playTurn(1); // Player 2 places O at index 1
+Game.playTurn(3);
+Game.playTurn(4);
+Game.playTurn(6); // Player 1 places X at index 6 and wins
+Game.playTurn(2); // This turn will not be played as the game has been reset after a win    
